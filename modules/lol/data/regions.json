@@ -1,0 +1,6 @@
+{
+  "sea": ["ph2", "sg2", "th2", "tw2", "vn2", "oc1"],
+  "europe": ["eun1", "euw1", "tr1", "ru"],
+  "asia": ["jp1", "kr"],
+  "americas": ["br1", "la1", "la2", "na1"]
+}

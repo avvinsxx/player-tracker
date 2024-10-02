@@ -61,6 +61,13 @@ async function updatePlayer(player: Player) {
   return error;
 }
 
+async function deletePlayer(id: number) {
+  const supabase = createClient();
+  const { error } = await supabase.from("players").delete().eq("id", id);
+
+  return error;
+}
+
 async function getPlayersPages(query: string) {
   const supabase = createClient();
 
@@ -78,4 +85,5 @@ export default {
   createPlayer,
   getPlayersPages,
   updatePlayer,
+  deletePlayer,
 };

@@ -8,7 +8,7 @@ import {
 
 const PAGE_SIZE = 5;
 
-export async function getAccountsByPage(query: string, currentPage: number) {
+async function getAccountsByPage(query: string, currentPage: number) {
   const supabase = createClient();
 
   const { data, error } = await supabase
@@ -23,7 +23,7 @@ export async function getAccountsByPage(query: string, currentPage: number) {
   return data?.map((acc) => dtoToAccount(acc));
 }
 
-export async function getAccountsPages(query: string) {
+async function getAccountsPages(query: string) {
   const supabase = createClient();
 
   const { count, error } = await supabase
@@ -31,6 +31,16 @@ export async function getAccountsPages(query: string) {
     .select("*", { count: "exact", head: true })
     .ilike("name", `%${query}%`);
   return error ? 0 : Math.ceil((count || 1) / PAGE_SIZE);
+}
+
+async function getPlayersAccountCount(id: number) {
+  const supabase = createClient();
+
+  const { count, error } = await supabase
+    .from("accounts")
+    .select("*", { count: "exact", head: true })
+    .eq("player_id", id);
+  return count && !error ? count : 0;
 }
 
 async function getAccountById(id: number) {
@@ -83,6 +93,13 @@ async function updateAccount(account: Account) {
   return error;
 }
 
+async function deleteAccount(id: number) {
+  const supabase = createClient();
+  const { error } = await supabase.from("accounts").delete().eq("id", id);
+
+  return error;
+}
+
 export default {
   getAccountById,
   getAccountByName,
@@ -91,4 +108,6 @@ export default {
   updateAccount,
   getAccountsPages,
   getAccountsByPage,
+  getPlayersAccountCount,
+  deleteAccount,
 };

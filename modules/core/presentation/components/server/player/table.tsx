@@ -1,7 +1,9 @@
 import { differenceInYears } from "date-fns";
 
 import PlayerService from "../../../../infrastructure/player";
+import DeleteButton from "../../client/player/delete-button/delete-button";
 import EditButton from "../../client/player/edit-button/edit-button";
+import InputGroup from "../input-group";
 
 export default async function Table({
   query,
@@ -55,7 +57,10 @@ export default async function Table({
 
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">
                       <div className="flex justify-end">
-                        <EditButton player={rec} />
+                        <InputGroup>
+                          <DeleteButton playerId={rec.id!} />
+                          <EditButton player={rec} />
+                        </InputGroup>
                       </div>
                     </td>
                   </tr>

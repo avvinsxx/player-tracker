@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getPlayerOptions } from "../../../../application/get-player-options";
 import { getPageUrl } from "../../../../domain/account/account";
 import AccountService from "../../../../infrastructure/account";
+import DeleteButton from "../../client/account/delete-button/delete-button";
 import EditButton from "../../client/account/edit-button/edit-button";
 import InputGroup from "../input-group";
 import Link from "../link";
@@ -99,6 +100,7 @@ export default async function Table({
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">
                       <div className="flex justify-end">
                         <InputGroup>
+                          <DeleteButton accountId={rec.id!} />
                           <EditButton
                             accountId={rec.id!}
                             players={playerOptions}

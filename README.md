@@ -1,6 +1,6 @@
 # Player Tracker App
 
-[Player Tracker App](https://##) - Application for tracking account activity in popular games, now implemented DOTA 2, League of Legends. You can group account into players.
+[Player Tracker App](https://player-tracker.vercel.app/) - Application for tracking account activity in popular games, now implemented DOTA 2, League of Legends. You can group account into players.
 League of Legends API is using test account and can be not available. 
 Test credentials (Login: "test@test.te" Password: 111555), while registration not implemented.
 

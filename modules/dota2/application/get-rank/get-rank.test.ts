@@ -1,45 +1,38 @@
 import { describe, expect, test, vitest } from "vitest";
 import { getRank } from "./get-rank";
 
-const mockPlayer = {
+const mockGetPlayer = vitest.fn().mockResolvedValue({
   id: 1,
   name: "name",
   avatar: "/avatar.png",
   avatarFull: "/avatarfull.png",
-};
+  leaderboardRank: 33,
+});
 
-const mockGetPlayer = vitest.fn().mockResolvedValue(mockPlayer);
-
-const mockGetLastRating = vitest.fn((playerId: number) =>
-  Promise.resolve({
-    playerId,
-    dateTime: Date.parse("2018-10-01T12:09:48.843Z"),
-    mmr: 3000,
-  }),
-);
-
-const mockGetMmrImage = vitest.fn().mockReturnValue("archon-5");
-const mockGetLeaderboardImage = vitest.fn().mockReturnValue("immortal-top-100");
+const mockGetLastRating = vitest.fn().mockResolvedValue({
+  playerId: 1,
+  dateTime: Date.parse("2018-10-01T12:09:48.843Z"),
+  mmr: 3000,
+});
 
 const mockDependencies = {
   getPlayer: mockGetPlayer,
   getLastRating: mockGetLastRating,
-  getMmrImage: mockGetMmrImage,
-  getLeaderboardImage: mockGetLeaderboardImage,
 };
 
 describe("get rank", () => {
-  test("get leaderboard rank with image", async () => {
-    mockGetPlayer.mockResolvedValueOnce({ ...mockPlayer, leaderboardRank: 33 });
+  test("get leaderboard and mmr", async () => {
+    const { leaderboard, mmr } = await getRank({ id: 1 }, mockDependencies);
 
-    const { rank, image } = await getRank({ id: 1 }, mockDependencies);
-    expect(rank).toEqual(33);
-    expect(image).toEqual("immortal-top-100");
+    expect(leaderboard).toEqual(33);
+    expect(mmr).toEqual(3000);
   });
+  test("get leaderboard and empty mmr", async () => {
+    mockGetLastRating.mockResolvedValueOnce(null);
 
-  test("get mmr image", async () => {
-    const { rank, image } = await getRank({ id: 1 }, mockDependencies);
-    expect(rank).toEqual(undefined);
-    expect(image).toEqual("archon-5");
+    const { leaderboard, mmr } = await getRank({ id: 1 }, mockDependencies);
+
+    expect(leaderboard).toEqual(33);
+    expect(mmr).toEqual(null);
   });
 });

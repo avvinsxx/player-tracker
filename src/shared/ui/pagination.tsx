@@ -8,7 +8,7 @@ import { arrayRange } from "../lib";
 
 export function Pagination({ totalPages }: { totalPages: number }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams() ?? new URLSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
 
   const createPageURL = (pageNumber: number | string) => {

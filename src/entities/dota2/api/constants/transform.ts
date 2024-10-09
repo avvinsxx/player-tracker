@@ -1,8 +1,4 @@
-import {
-  GameModeConstants,
-  HeroConstants,
-  ItemConstants,
-} from "@/modules/dota2/domain";
+import { GameModeConstants, HeroConstants, ItemConstants } from "../../model";
 import {
   GameModeConstantsDto,
   HeroConstantsDto,

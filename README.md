@@ -15,7 +15,7 @@ Test credentials (Login: "test@test.te" Password: 111555), while registration no
 ## Roadmap:
 
 - [ ] user registration
-- [ ] records deletion
+- [x] records deletion
 - [ ] attach created data to logged in user
 - [ ] improve test coverage
 - [ ] add dashboard page

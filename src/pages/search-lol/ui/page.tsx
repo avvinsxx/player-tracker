@@ -1,5 +1,5 @@
-import SearchForm from "@/modules/lol/presentation/components/client/search-form/search-form";
 import { PageHeader } from "@/src/shared/ui";
+import SearchForm from "./search-form";
 
 export function Page() {
   return (

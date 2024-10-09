@@ -1,10 +1,12 @@
-import {
-  PlayerHero,
-  PlayerWl,
-  Rating,
-  RecentMatch,
-} from "@/modules/dota2/domain";
-import { Player } from "../../domain/player/player";
+// import {
+//   PlayerHero,
+//   PlayerWl,
+//   Rating,
+//   RecentMatch,
+// } from "@/modules/dota2/domain";
+// import { Player } from "../../domain/player/player";
+import { PlayerHero, PlayerWl, Rating, RecentMatch } from "../../model";
+import { Player } from "../../model/player/player";
 import {
   PlayerDto,
   PlayerHeroDto,

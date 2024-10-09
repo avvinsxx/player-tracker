@@ -1,4 +1,4 @@
-import { SearchResult } from "../../../../modules/dota2/domain";
+import { SearchResult } from "../../model";
 import { SearchResultDto } from "./dto";
 
 export function dtoToSearchResult(dto: SearchResultDto): SearchResult {

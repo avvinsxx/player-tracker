@@ -1,16 +1,15 @@
 import Image from "next/image";
 
-import AuthService from "@/modules/core/infrastructure/auth";
-import Logout from "@/modules/core/presentation/components/client/auth/logout/logout";
-import NavLinks from "@/modules/core/presentation/components/client/nav-links";
-import Logo from "@/modules/core/presentation/components/server/logo";
+import { Logout } from "@/src/features/logout";
+import { getSession } from "@/src/shared/api";
+import { Logo, NavLinks } from "@/src/shared/ui";
 
 export default async function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await AuthService.getSession();
+  const session = await getSession(); // TODO switch to get user from SB
   return (
     <div className="grid h-screen grid-cols-[15%_1fr] grid-rows-[4rem_1fr] overflow-y-auto bg-neutral-800 text-neutral-200">
       <div className="row-span-2 flex flex-col gap-5 border-r-2 border-r-neutral-700 px-3 py-5">

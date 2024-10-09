@@ -1,4 +1,4 @@
-import Link from "@/modules/core/presentation/components/server/link";
+import { Link } from "@/src/shared/ui";
 
 export default function NotFound() {
   return (

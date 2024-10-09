@@ -1,11 +1,5 @@
-import PageHeader from "@/modules/core/presentation/components/server/page-header";
-import SearchForm from "@/modules/lol/presentation/components/client/search-form/search-form";
+import { SearchLolPage } from "@/src/pages/search-lol";
 
 export default function Page() {
-  return (
-    <div>
-      <PageHeader>Search account</PageHeader>
-      <SearchForm />
-    </div>
-  );
+  return <SearchLolPage />;
 }

@@ -1,4 +1,4 @@
-import Spinner from "@/modules/core/presentation/components/server/spinner";
+import { Spinner } from "@/src/shared/ui";
 
 export default async function Loading() {
   return (

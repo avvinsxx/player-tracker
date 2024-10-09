@@ -1,11 +1,5 @@
-import PageHeader from "@/modules/core/presentation/components/server/page-header";
-import SearchForm from "@/modules/dota2/presentation/components/client/search-form/search-form";
+import { SearchDota2Page } from "@/src/pages/search-dota2";
 
 export default function Page() {
-  return (
-    <div>
-      <PageHeader>Search account</PageHeader>
-      <SearchForm />
-    </div>
-  );
+  return <SearchDota2Page />;
 }
